@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +12,8 @@ public class ManualPlayerController : MonoBehaviour
     public Transform bulletSpawnPoint;
 
     public GameObject bulletPrefab;
+
+    public string enemyTank = "RightTank";
 
     public float bulletDirection = 1;
 
@@ -53,7 +55,17 @@ public class ManualPlayerController : MonoBehaviour
         ctrl.direction = bulletDirection;
         ctrl.enabled = true;
 
+        var detection = bullet.GetComponent<BulletDetection>();
+        detection.enemyTank = enemyTank;
+        detection.BulletHit += Bullet_Hit;
+
         yield return new WaitForSeconds(bulletCooldownSeconds);
         isCoolingDown = false;
+    }
+
+    private void Bullet_Hit(object sender, EventArgs e)
+    {
+        (sender as BulletDetection).BulletHit -= Bullet_Hit;
+        print("BANG!");
     }
 }
