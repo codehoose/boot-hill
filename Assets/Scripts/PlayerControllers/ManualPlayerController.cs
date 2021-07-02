@@ -9,6 +9,16 @@ public class ManualPlayerController : MonoBehaviour
 
     public InputAction fire;
 
+    public Transform bulletSpawnPoint;
+
+    public GameObject bulletPrefab;
+
+    public float bulletDirection = 1;
+
+    public float bulletCooldownSeconds = 1f;
+
+    private bool isCoolingDown;
+
     private void OnEnable()
     {
         movement.Enable();
@@ -21,21 +31,29 @@ public class ManualPlayerController : MonoBehaviour
         fire.Disable();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         var delta = movement.ReadValue<Vector2>() * 400 * Time.deltaTime;
         transform.position += new Vector3(delta.x, delta.y, transform.position.z);
 
-        if (fire.ReadValue<float>() > 0)
+        if (fire.ReadValue<float>() > 0 && !isCoolingDown)
         {
-            Debug.Log("FIRE");
+            StartCoroutine(FireBullet());
         }
+    }
+
+    IEnumerator FireBullet()
+    {
+        isCoolingDown = true;
+
+        var bullet = Instantiate(bulletPrefab,
+                                 bulletSpawnPoint.transform.position,
+                                 Quaternion.identity);
+        var ctrl = bullet.GetComponent<SimpleBulletController>();
+        ctrl.direction = bulletDirection;
+        ctrl.enabled = true;
+
+        yield return new WaitForSeconds(bulletCooldownSeconds);
+        isCoolingDown = false;
     }
 }
