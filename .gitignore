@@ -1,0 +1,9 @@
+[Tt]emp
+[Ll]ibrary
+[Ll]ogs
+[Oo]bj
+*.csproj
+.suo
+.vs
+*.sln
+*.vsconfig
