@@ -545,6 +545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884692858}
+  - component: {fileID: 884692861}
   - component: {fileID: 884692860}
   - component: {fileID: 884692859}
   m_Layer: 0
@@ -672,6 +673,19 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Fire
       m_Flags: 0
+  locomotion: {fileID: 884692861}
+--- !u!114 &884692861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884692857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5c2fe2224d9c409d1c733de2cf822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   bulletSpawnPoint: {fileID: 1911980991}
   bulletPrefab: {fileID: 594300520}
   enemyTank: RightTank
@@ -850,6 +864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1816747314}
+  - component: {fileID: 1816747316}
   - component: {fileID: 1816747313}
   - component: {fileID: 1816747315}
   m_Layer: 0
@@ -935,11 +950,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Fire
       m_Flags: 0
-  bulletSpawnPoint: {fileID: 382441788}
-  bulletPrefab: {fileID: 307727607}
-  enemyTank: LeftTank
-  bulletDirection: -1
-  bulletCooldownSeconds: 1
+  locomotion: {fileID: 1816747316}
 --- !u!4 &1816747314
 Transform:
   m_ObjectHideFlags: 0
@@ -982,6 +993,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 127, y: 129.1}
   m_EdgeRadius: 0
+--- !u!114 &1816747316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1816747312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89b5c2fe2224d9c409d1c733de2cf822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawnPoint: {fileID: 382441788}
+  bulletPrefab: {fileID: 307727607}
+  enemyTank: LeftTank
+  bulletDirection: -1
+  bulletCooldownSeconds: 1
 --- !u!1 &1839389850
 GameObject:
   m_ObjectHideFlags: 0
